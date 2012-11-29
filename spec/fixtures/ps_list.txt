@@ -1,0 +1,71 @@
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         1  0.0  0.3   3520  1532 ?        Ss   Nov23   0:00 /sbin/init
+root         2  0.0  0.0      0     0 ?        S    Nov23   0:00 [kthreadd]
+root         3  0.0  0.0      0     0 ?        S    Nov23   0:02 [ksoftirqd/0]
+root         5  0.0  0.0      0     0 ?        S    Nov23   0:00 [kworker/u:0]
+root         6  0.0  0.0      0     0 ?        S    Nov23   0:00 [migration/0]
+root         7  0.0  0.0      0     0 ?        S    Nov23   0:04 [watchdog/0]
+root         8  0.0  0.0      0     0 ?        S<   Nov23   0:00 [cpuset]
+root         9  0.0  0.0      0     0 ?        S<   Nov23   0:00 [khelper]
+root        10  0.0  0.0      0     0 ?        S    Nov23   0:00 [kdevtmpfs]
+root        11  0.0  0.0      0     0 ?        S<   Nov23   0:00 [netns]
+root        12  0.0  0.0      0     0 ?        S    Nov23   0:02 [sync_supers]
+root        13  0.0  0.0      0     0 ?        S    Nov23   0:00 [bdi-default]
+root        14  0.0  0.0      0     0 ?        S<   Nov23   0:00 [kintegrityd]
+root        15  0.0  0.0      0     0 ?        S<   Nov23   0:00 [kblockd]
+root        16  0.0  0.0      0     0 ?        S<   Nov23   0:00 [ata_sff]
+root        17  0.0  0.0      0     0 ?        S    Nov23   0:00 [khubd]
+root        18  0.0  0.0      0     0 ?        S<   Nov23   0:00 [md]
+root        19  0.0  0.0      0     0 ?        S    Nov23   0:00 [kworker/u:1]
+root        21  0.0  0.0      0     0 ?        S    Nov23   0:00 [khungtaskd]
+root        22  0.0  0.0      0     0 ?        S    Nov23   0:00 [kswapd0]
+root        23  0.0  0.0      0     0 ?        SN   Nov23   0:00 [ksmd]
+root        24  0.0  0.0      0     0 ?        S    Nov23   0:00 [fsnotify_mark]
+root        25  0.0  0.0      0     0 ?        S    Nov23   0:00 [ecryptfs-kthrea]
+root        26  0.0  0.0      0     0 ?        S<   Nov23   0:00 [crypto]
+root        34  0.0  0.0      0     0 ?        S<   Nov23   0:00 [kthrotld]
+root        36  0.0  0.0      0     0 ?        S    Nov23   0:00 [scsi_eh_0]
+root        37  0.0  0.0      0     0 ?        S    Nov23   0:00 [scsi_eh_1]
+root        39  0.0  0.0      0     0 ?        S    Nov23   0:00 [scsi_eh_2]
+root        61  0.0  0.0      0     0 ?        S<   Nov23   0:00 [devfreq_wq]
+root       219  0.0  0.0      0     0 ?        S<   Nov23   0:00 [kdmflush]
+root       228  0.0  0.0      0     0 ?        S<   Nov23   0:00 [kdmflush]
+root       242  0.0  0.0      0     0 ?        S    Nov23   0:01 [jbd2/dm-0-8]
+root       243  0.0  0.0      0     0 ?        S<   Nov23   0:00 [ext4-dio-unwrit]
+root       330  0.0  0.1   2816   588 ?        S    Nov23   0:00 upstart-udev-bridge --daemon
+root       332  0.0  0.1   2944   852 ?        Ss   Nov23   0:00 /sbin/udevd --daemon
+root       439  0.0  0.0      0     0 ?        S<   Nov23   0:00 [kpsmoused]
+root       480  0.0  0.0   2828   176 ?        S    Nov23   0:00 upstart-socket-bridge --daemon
+root       745  0.0  0.2   6664  1516 ?        Ss   Nov23   0:00 /usr/sbin/sshd -D
+102        750  0.0  0.0   3240   356 ?        Ss   Nov23   0:00 dbus-daemon --system --fork --activation=upstart
+syslog     760  0.0  0.1  30148   880 ?        Sl   Nov23   0:22 rsyslogd -c5
+root       822  0.0  0.1   4612   672 tty4     Ss+  Nov23   0:00 /sbin/getty -8 38400 tty4
+root       830  0.0  0.1   4612   672 tty5     Ss+  Nov23   0:00 /sbin/getty -8 38400 tty5
+root       840  0.0  0.1   4612   672 tty2     Ss+  Nov23   0:00 /sbin/getty -8 38400 tty2
+root       841  0.0  0.1   4612   672 tty3     Ss+  Nov23   0:00 /sbin/getty -8 38400 tty3
+root       846  0.0  0.1   4612   672 tty6     Ss+  Nov23   0:00 /sbin/getty -8 38400 tty6
+whoopsie   866  0.0  0.4  24440  2168 ?        Ssl  Nov23   0:15 whoopsie
+root       867  0.0  0.0   2156   484 ?        Ss   Nov23   0:00 acpid -c /etc/acpi/events -s /var/run/acpid.socket
+root       893  0.0  0.1   2600   708 ?        Ss   Nov23   0:00 cron
+daemon     894  0.0  0.0   2452   232 ?        Ss   Nov23   0:00 atd
+root       925  0.0  0.1   4612   672 tty1     Ss+  Nov23   0:00 /sbin/getty -8 38400 tty1
+dev       1395  0.0  0.7   5640  3564 ?        Ss   Nov23   3:02 tmux -2
+root      2922  0.0  0.6   9604  3088 ?        Ss   12:18   0:00 sshd: dev [priv]    
+dev       3083  0.0  0.2   9604  1468 ?        S    12:18   0:00 sshd: dev@pts/1     
+dev       3084  0.0  1.1   9420  5924 pts/1    Ss   12:18   0:00 -zsh
+root      3816  0.0  0.0      0     0 ?        S    12:38   0:00 [kworker/0:0]
+root      4002  0.0  0.0      0     0 ?        S    12:45   0:00 [flush-252:0]
+dev       4199  0.0  1.7  25804  8876 pts/5    S+   12:46   0:00 vim
+dev       4460  0.0  0.2   3256  1024 pts/1    S+   12:53   0:00 tmux -2
+dev       4461  0.0  1.0   8812  5272 pts/2    Ss   12:53   0:00 -zsh
+dev       4971  0.0  1.0   8924  5216 pts/5    Ss   Nov23   0:00 -zsh
+dev       5368  0.0  0.8   8024  4284 pts/3    Ss+  12:57   0:00 -zsh
+root      5566  0.0  0.0      0     0 ?        S    13:03   0:00 [kworker/0:2]
+mysql     5590  0.0  8.7 328964 44596 ?        Ssl  Nov23   2:04 /usr/sbin/mysqld
+root      5661  0.0  0.0      0     0 ?        S    13:08   0:00 [kworker/0:1]
+dev       5809  0.0  0.2   4924  1164 pts/2    R+   13:10   0:00 ps axu
+dev       6124  0.0  1.2  26712  6424 pts/5    T    Nov23   0:16 vim
+dev      20477  0.0  1.1   9496  5892 pts/6    Ss   Nov26   0:00 -zsh
+dev      29317  0.0  9.6  69572 49144 pts/6    Sl+  Nov26   0:53 ruby /home/dev/.rvm/gems/ruby-1.9.3-p194@app_checker/bin/rackup
+root     30080  0.0  0.1   2940   616 ?        S    Nov27   0:00 /sbin/udevd --daemon
+root     30085  0.0  0.1   2892   660 ?        S    Nov27   0:00 /sbin/udevd --daemon
