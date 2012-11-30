@@ -16,9 +16,6 @@ describe "Commands without chaining" do
     @command.uname("-a").run.should == long_version
   end
 
-  #grep("this").tail.cat("file")
-  #cat("file").tail.grep("This")
-
 end
 
 describe "Commands with chaining" do

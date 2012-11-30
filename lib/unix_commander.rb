@@ -14,15 +14,15 @@ module UnixCommander
     end
 
     def method_missing(m, *args, &block)
-      if @cmd == ""
+      if cmd == ""
         Command.new("#{m} #{args.join(' ')}".strip)
       else
-        Command.new("#{@cmd} | #{m} #{args.join(' ')}".strip)
+        Command.new("#{cmd} | #{m} #{args.join(' ')}".strip)
       end
     end
 
     def run
-      @in, @out, @err = Open3.popen3("#{@cmd}")
+      @in, @out, @err = Open3.popen3("#{cmd}")
       @out.read
     end
 
