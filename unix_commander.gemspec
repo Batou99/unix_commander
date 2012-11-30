@@ -19,4 +19,7 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency "rspec", "~> 2.12"
   gem.add_development_dependency "pry"
   gem.add_development_dependency "pry-debugger"
+  gem.add_development_dependency "guard-rspec"
+  gem.add_development_dependency "rb-inotify"
+  gem.add_development_dependency "rb-fsevent"
 end
