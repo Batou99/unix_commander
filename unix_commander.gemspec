@@ -8,9 +8,9 @@ Gem::Specification.new do |gem|
   gem.version       = UnixCommander::VERSION
   gem.authors       = ["Lorenzo Lopez"]
   gem.email         = ["lorenzo.lopez@uk.tesco.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
-  gem.homepage      = ""
+  gem.description   = %q{A gem to run unix commands on a more ruby-esque way}
+  gem.summary       = gem.description
+  gem.homepage      = "https://github.com/Batou99/unix_commander"
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
