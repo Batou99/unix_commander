@@ -35,5 +35,15 @@ describe "Commands with chaining" do
     cpuinfo = %x[ cat /proc/cpuinfo | awk '{ print $1 }' | head -n1]
     @command.cat("/proc/cpuinfo").awk("'{ print $1 }'").head("-n1").run.should == cpuinfo
   end
+end
 
+describe "Run via ssh" do
+  before do
+    @command = UnixCommander::Command.new
+  end
+  
+  it "can chain 2 commands" do
+    uname_cut = %x[uname -a | cut -d'#' -f1]
+    @command.uname("-a").cut("-d'#' -f1").run_ssh('dev','dev').should == uname_cut
+  end
 end
