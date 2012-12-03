@@ -5,6 +5,64 @@ require 'net/ssh'
 
 module UnixCommander
 
+  class Runner
+
+    attr :command
+
+    def initialize(_command)
+      @command = _command
+    end
+
+    def to_s
+      both.join("\n")
+    end
+
+    def out
+      return "" if @out==nil
+      return @out if @out.class==String
+      @out.read
+    end
+
+    def err
+      return "" if @err==nil
+      return @err if @err.class==String
+      @err.read
+    end
+
+    def both
+      [out, err]
+    end
+
+    def run
+      @in, @out, @err = Open3.popen3("#{@command.cmd}")
+      self
+    end
+
+    def run_ssh(_username, _password = "", _address = "127.0.0.1")
+      stdout_data = ""
+      stderr_data = ""
+      Net::SSH.start(_address,_username,:password => _password) do |ssh|
+        channel = ssh.open_channel do |ch|
+          ch.exec(@command.cmd) do |ch,success|
+            # "on_data" is called when the process writes something to stdout
+            ch.on_data do |c, data|
+              stdout_data += data
+            end
+
+            # "on_extended_data" is called when the process writes something to stderr
+            ch.on_extended_data do |c, type, data|
+              stderr_data += data
+            end
+          end
+        end
+      end
+      @out = stdout_data
+      @err = stderr_data
+      self
+    end
+  end
+
+
   class Command
 
     attr :cmd
@@ -25,7 +83,7 @@ module UnixCommander
       end
     end
 
-    def out(_str,_append=false)
+    def out_to(_str,_append=false)
       if cmd == ""
         raise ArgumentError, "Cannot redirect with an empty command"
       else
@@ -33,7 +91,7 @@ module UnixCommander
       end
     end
 
-    def err(_str,_append=false)
+    def err_to(_str,_append=false)
       if cmd == ""
         raise ArgumentError, "Cannot redirect with an empty command"
       else
@@ -41,7 +99,7 @@ module UnixCommander
       end
     end
 
-    def both(_str,_append=false)
+    def both_to(_str,_append=false)
       if cmd == ""
         raise ArgumentError, "Cannot redirect with an empty command"
       else
@@ -50,30 +108,12 @@ module UnixCommander
     end
 
     def run
-      @in, @out, @err = Open3.popen3("#{cmd}")
-      return @out.read, @err.read
+      Runner.new(self).run
     end
 
     def run_ssh(_username, _password = "", _address = "127.0.0.1")
-      stdout_data = ""
-      stderr_data = ""
-      Net::SSH.start(_address,_username,:password => _password) do |ssh|
-        channel = ssh.open_channel do |ch|
-          ch.exec(@cmd) do |ch,success|
-            # "on_data" is called when the process writes something to stdout
-            ch.on_data do |c, data|
-              stdout_data += data
-            end
-
-            # "on_extended_data" is called when the process writes something to stderr
-            ch.on_extended_data do |c, type, data|
-              stderr_data += data
-            end
-          end
-        end
-      end
-      # We have to strip the extra linefeed
-      return stdout_data, stderr_data
+      Runner.new(self).run_ssh(_username,_password,_address)
     end
   end
+      
 end
