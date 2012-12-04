@@ -1,3 +1,5 @@
 module UnixCommander
-  VERSION = "0.0.2"
+<<<<<<< HEAD
+  VERSION = "0.1.0"
+>>>>>>> development
 end
