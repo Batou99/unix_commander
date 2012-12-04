@@ -30,8 +30,7 @@ module UnixCommander
     # @return [String] *stdout* of the command
     def out
       return "" if @out==nil
-      return @out if @out.class==String
-      @out.read
+      @out
     end
 
     # Returns the output (stderr) of the command
@@ -39,8 +38,7 @@ module UnixCommander
     # @return [String] *stderr* of the command
     def err
       return "" if @err==nil
-      return @err if @err.class==String
-      @err.read
+      @err
     end
 
     # Return a string with the output of the command
@@ -54,6 +52,8 @@ module UnixCommander
     # @return [Runner] Returns itself
     def run
       @in, @out, @err = Open3.popen3("#{@command.cmd}")
+      @out = @out.read
+      @err = @err.read
       self
     end
 
@@ -101,20 +101,6 @@ module UnixCommander
     # @return [String]
     def to_s
       cmd
-    end
-
-    # This is the main method of the library. Every unknown method you call on a Command object
-    # is interpreted as a unix command and its args are used as the args of the unix command.
-    # When the command already has some unix command inside, it pipes them together (|)
-    # @param [String] m name of the unix command you want to execute
-    # @param [Array] *args args for the aforementioned command
-    # @return [Command] new command with internal unix commands piped together
-    def method_missing(m, *args, &block)
-      if cmd == ""
-        Command.new("#{m} #{args.join(' ')}".strip)
-      else
-        Command.new("#{cmd} | #{m} #{args.join(' ')}".strip)
-      end
     end
 
     # Redirects *stdout* to someplace (Using >). By default it uses destructive redirection.
@@ -167,6 +153,21 @@ module UnixCommander
     def run_ssh(_username, _password = "", _address = "127.0.0.1")
       Runner.new(self).run_ssh(_username,_password,_address)
     end
+    
+    # This is the main method of the library. Every unknown method you call on a Command object
+    # is interpreted as a unix command and its args are used as the args of the unix command.
+    # When the command already has some unix command inside, it pipes them together (|)
+    # @param [String] m name of the unix command you want to execute
+    # @param [Array] *args args for the aforementioned command
+    # @return [Command] new command with internal unix commands piped together
+    def method_missing(m, *args, &block)
+      if cmd == ""
+        Command.new("#{m} #{args.join(' ')}".strip)
+      else
+        Command.new("#{cmd} | #{m} #{args.join(' ')}".strip)
+      end
+    end
+
   end
       
 end

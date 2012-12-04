@@ -36,7 +36,19 @@ describe "Runner local" do
     out_err[0].should_not == ""
     out_err[1].should_not == ""
   end
+
+  it "can read out twice" do
+    runner = @command.run 
+    runner.out.should == %x[uname]
+    runner.out.should == %x[uname]
+  end
   
+  it "can read err twice" do
+    @command = UnixCommander::Command.new("grep abc /etc/*")
+    runner = @command.run 
+    runner.out.should_not == ""
+    runner.out.should_not == ""
+  end
 end
 
 describe "Runner ssh" do
@@ -70,4 +82,16 @@ describe "Runner ssh" do
     out_err[1].should_not == ""
   end
   
+  it "can read out twice" do
+    runner = @command.run_ssh('dev','dev')
+    runner.out.should == %x[uname]
+    runner.out.should == %x[uname]
+  end
+  
+  it "can read err twice" do
+    @command = UnixCommander::Command.new("grep abc /etc/*")
+    runner = @command.run_ssh('dev','dev')
+    runner.out.should_not == ""
+    runner.out.should_not == ""
+  end
 end
