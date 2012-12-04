@@ -35,6 +35,7 @@ comm.cat("file").tail("-n10").grep("'something'").run
 ```
 
 You can use redirection too
+
 ```
 require 'unix_commander'
 
@@ -42,7 +43,6 @@ comm = UnixCommander::Command.new
 comm.cat("file").tail("-n10").grep("'something'").out_to("my_file").err_to("/dev/null")
 ```
 
->>>>>>> development
 You don't have to run the commands right away, we can create a command and run it whe we see fit:
 
 ```
@@ -51,7 +51,7 @@ require 'unix_commander'
 comm = UnixCommander::Command.new
 comm = comm.cat("file").tail("-n10").grep("'something'")
 
-...
+#...
 
 comm.run
 ```
@@ -67,6 +67,7 @@ comm.cat("file").tail("-n10").grep("'something'").run_ssh("Batou99","secret","re
 ```
 
 After running a command you can access it output using **out**, **err** or **both**
+
 ```
 require 'unix_commander'
 
@@ -77,6 +78,7 @@ comm.cat("file").tail("-n10").grep("'something'").run_ssh("Batou99","secret","re
 # Or
 comm.cat("file").tail("-n10").grep("'something'").run_ssh("Batou99","secret","remote_server").both
 ```
+
 ## Contributing
 
 1. Fork it
