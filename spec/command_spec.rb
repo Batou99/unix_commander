@@ -1,5 +1,4 @@
-require 'pry'
-require './lib/unix_commander'
+require 'spec_helper'
 
 describe "Commands without chaining" do
   before do
