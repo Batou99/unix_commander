@@ -93,7 +93,7 @@ module UnixCommander
     attr :cmd
 
     # Creates a new command
-    # @param [String] create a command with some unix code inside (defaults to "")
+    # @param [String] _cmd create a command with some unix code inside (defaults to "")
     def initialize(_cmd = "")
       @cmd = _cmd
     end
@@ -104,8 +104,8 @@ module UnixCommander
     end
 
     # Redirects *stdout* to someplace (Using >). By default it uses destructive redirection.
-    # @param [String] place to redirect the output (e.g. /dev/null)
-    # @param [true,false] append if true uses append redirection (>>) it defaults to false.
+    # @param [String] _str place to redirect the output (e.g. /dev/null)
+    # @param [true,false] _append if true uses append redirection (>>) it defaults to false.
     # @return [Command] New command with *stdout* redirected to _str
     def out_to(_str,_append=false)
       if cmd == ""
@@ -116,8 +116,8 @@ module UnixCommander
     end
 
     # Redirects *stderr* to someplace (Using >). By default it uses destructive redirection.
-    # @param [String] place to redirect the output (e.g. /dev/null)
-    # @param [true,false] append if true uses append redirection (>>) it defaults to false.
+    # @param [String] _str place to redirect the output (e.g. /dev/null)
+    # @param [true,false] _append if true uses append redirection (>>) it defaults to false.
     # @return [Command] New command with *stderr* redirected to _str
     def err_to(_str,_append=false)
       if cmd == ""
@@ -128,8 +128,8 @@ module UnixCommander
     end
 
     # Redirects *stdout* and *stderr* to someplace (Using >). By default it uses destructive redirection.
-    # @param [String] place to redirect the output (e.g. /dev/null)
-    # @param [true,false] append if true uses append redirection (>>) it defaults to false.
+    # @param [String] _str place to redirect the output (e.g. /dev/null)
+    # @param [true,false] _append if true uses append redirection (>>) it defaults to false.
     # @return [Command] New command with *stdout and stderr* redirected to _str
     def both_to(_str,_append=false)
       if cmd == ""
@@ -158,7 +158,7 @@ module UnixCommander
     # is interpreted as a unix command and its args are used as the args of the unix command.
     # When the command already has some unix command inside, it pipes them together (|)
     # @param [String] m name of the unix command you want to execute
-    # @param [Array] *args args for the aforementioned command
+    # @param [Array] args args for the aforementioned command
     # @return [Command] new command with internal unix commands piped together
     def method_missing(m, *args, &block)
       if cmd == ""
